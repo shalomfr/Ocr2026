@@ -1,10 +1,10 @@
 from flask import Blueprint, request, jsonify, Response
-from database.db import db
-from database.models import Character, TrainingRun
-from models.ocr_model import HebrewOCRModel, CharacterEncoder
-from models.training import ModelTrainer, TrainingDataset
-from services.image_processing import ImageProcessor
-from config import Config
+from backend.database.db import db
+from backend.database.models import Character, TrainingRun
+from backend.models.ocr_model import HebrewOCRModel, CharacterEncoder
+from backend.models.training import ModelTrainer, TrainingDataset
+from backend.services.image_processing import ImageProcessor
+from backend.config import Config
 import cloudinary.utils
 import os
 import json

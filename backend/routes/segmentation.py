@@ -1,11 +1,11 @@
 from flask import Blueprint, request, jsonify
-from database.db import db
-from database.models import Document, Character, Line
-from services.image_processing import ImageProcessor
-from services.character_grouping import CharacterSegmenter
-from services.line_segmentation import LineSegmenter
+from backend.database.db import db
+from backend.database.models import Document, Character, Line
+from backend.services.image_processing import ImageProcessor
+from backend.services.character_grouping import CharacterSegmenter
+from backend.services.line_segmentation import LineSegmenter
 import cloudinary.uploader
-from config import Config
+from backend.config import Config
 import os
 import cv2
 import io

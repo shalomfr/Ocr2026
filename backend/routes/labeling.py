@@ -1,6 +1,6 @@
 from flask import Blueprint, request, jsonify
-from database.db import db
-from database.models import Character, Line, Document
+from backend.database.db import db
+from backend.database.models import Character, Line, Document
 
 labeling_bp = Blueprint('labeling', __name__)
 

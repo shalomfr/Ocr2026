@@ -1,9 +1,9 @@
 from flask import Blueprint, request, jsonify
-from database.db import db
-from database.models import Document
-from services.image_processing import ImageProcessor
+from backend.database.db import db
+from backend.database.models import Document
+from backend.services.image_processing import ImageProcessor
 import cloudinary.uploader
-from config import Config
+from backend.config import Config
 from datetime import datetime
 import os
 

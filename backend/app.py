@@ -1,16 +1,16 @@
 from flask import Flask, jsonify
 from flask_cors import CORS
-from config import Config
-from database.db import db, init_db
+from backend.config import Config
+from backend.database.db import db, init_db
 import cloudinary
 import os
 
 # Import blueprints
-from routes.upload import upload_bp
-from routes.preprocessing import preprocessing_bp
-from routes.segmentation import segmentation_bp
-from routes.labeling import labeling_bp
-from routes.training import training_bp
+from backend.routes.upload import upload_bp
+from backend.routes.preprocessing import preprocessing_bp
+from backend.routes.segmentation import segmentation_bp
+from backend.routes.labeling import labeling_bp
+from backend.routes.training import training_bp
 
 
 def create_app(config_class=Config):

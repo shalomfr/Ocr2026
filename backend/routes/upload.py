@@ -1,12 +1,12 @@
 from flask import Blueprint, request, jsonify
 from werkzeug.utils import secure_filename
 import os
-from database.db import db
-from database.models import Document
-from services.image_processing import ImageProcessor
+from backend.database.db import db
+from backend.database.models import Document
+from backend.services.image_processing import ImageProcessor
 import cloudinary
 import cloudinary.uploader
-from config import Config
+from backend.config import Config
 from datetime import datetime
 
 upload_bp = Blueprint('upload', __name__)
