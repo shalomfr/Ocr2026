@@ -23,7 +23,7 @@ export default function ModelTraining({ onComplete, onBack }: ModelTrainingProps
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
 
     if (training) {
       interval = setInterval(async () => {

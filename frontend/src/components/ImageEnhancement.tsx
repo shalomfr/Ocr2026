@@ -28,7 +28,7 @@ export default function ImageEnhancement({
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string>('');
-  const [debounceTimer, setDebounceTimer] = useState<NodeJS.Timeout | null>(null);
+  const [debounceTimer, setDebounceTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
 
   const updateEnhancement = useCallback(async (newParams: EnhancementParams) => {
     setLoading(true);
