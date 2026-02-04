@@ -1,0 +1,116 @@
+.enhancement-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.image-preview {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.image-wrapper {
+  position: relative;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  max-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+  max-height: 600px;
+  display: block;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.controls {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.controls h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: #333;
+}
+
+.control-group {
+  margin-bottom: 1.5rem;
+}
+
+.control-group label {
+  display: block;
+}
+
+.control-group label > span {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.control-group input[type="range"] {
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+}
+
+.button-group {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e0e0e0;
+}
+
+.action-buttons button {
+  min-width: 120px;
+}
+
+@media (max-width: 968px) {
+  .enhancement-container {
+    grid-template-columns: 1fr;
+  }
+}

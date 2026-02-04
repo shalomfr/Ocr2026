@@ -1,0 +1,39 @@
+.dropzone {
+  border: 3px dashed #ccc;
+  border-radius: 8px;
+  padding: 4rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.dropzone:hover {
+  border-color: #667eea;
+  background-color: #f0f0f0;
+}
+
+.dropzone.active {
+  border-color: #667eea;
+  background-color: #e8eaf6;
+}
+
+.dropzone.uploading {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.dropzone svg {
+  color: #667eea;
+  margin-bottom: 1rem;
+}
+
+.dropzone p {
+  margin: 0.5rem 0;
+  color: #666;
+}
+
+.file-types {
+  font-size: 0.875rem;
+  color: #999;
+}
