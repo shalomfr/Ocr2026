@@ -278,7 +278,9 @@ def get_characters(document_id):
             if Config.STORAGE_TYPE == 'cloudinary':
                 image_url = cloudinary.utils.cloudinary_url(char.image_path)[0]
             else:
-                image_url = f"/uploads/{os.path.basename(char.image_path)}"
+                # Remove UPLOAD_FOLDER prefix to get relative path
+                relative_path = char.image_path.replace(Config.UPLOAD_FOLDER, '').lstrip('/')
+                image_url = f"/uploads/{relative_path}"
 
             groups[group_id].append({
                 'id': char.id,
@@ -313,7 +315,9 @@ def get_lines(document_id):
             if Config.STORAGE_TYPE == 'cloudinary':
                 image_url = cloudinary.utils.cloudinary_url(line.image_path)[0]
             else:
-                image_url = f"/uploads/{os.path.basename(line.image_path)}"
+                # Remove UPLOAD_FOLDER prefix to get relative path
+                relative_path = line.image_path.replace(Config.UPLOAD_FOLDER, '').lstrip('/')
+                image_url = f"/uploads/{relative_path}"
 
             result_lines.append({
                 'id': line.id,
