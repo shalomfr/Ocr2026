@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, send_from_directory
 from flask_cors import CORS
 from backend.config import Config
 from backend.database.db import db, init_db
@@ -20,7 +20,7 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
 
     # Initialize extensions
-    CORS(app, resources={r"/api/*": {"origins": "*"}})
+    CORS(app, resources={r"/api/*": {"origins": "*"}, r"/uploads/*": {"origins": "*"}})
 
     # Initialize database
     init_db(app)
@@ -72,6 +72,12 @@ def create_app(config_class=Config):
                 'train_status': '/api/train/status'
             }
         }), 200
+
+    # Serve uploaded files (for local storage)
+    @app.route('/uploads/<path:filename>')
+    def serve_upload(filename):
+        upload_folder = app.config.get('UPLOAD_FOLDER', '/data/uploads')
+        return send_from_directory(upload_folder, filename)
 
     # Error handlers
     @app.errorhandler(404)
