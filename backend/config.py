@@ -3,15 +3,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Base directory for resolving relative paths
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
 class Config:
     """Application configuration"""
 
     # Flask settings
     SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-in-production')
-    DEBUG = os.getenv('FLASK_DEBUG', 'False') == 'True'
+    DEBUG = os.getenv('FLASK_DEBUG', 'True') == 'True'
 
-    # Database settings
-    DATABASE_URL = os.getenv('DATABASE_URL', 'postgresql://localhost/hebrew_ocr')
+    # Database settings - SQLite by default for local, PostgreSQL for production
+    DATABASE_URL = os.getenv('DATABASE_URL', f'sqlite:///{os.path.join(BASE_DIR, "hebrew_ocr.db")}')
     if DATABASE_URL and DATABASE_URL.startswith('postgres://'):
         DATABASE_URL = DATABASE_URL.replace('postgres://', 'postgresql://', 1)
     SQLALCHEMY_DATABASE_URI = DATABASE_URL
@@ -19,17 +22,15 @@ class Config:
     SQLALCHEMY_ENGINE_OPTIONS = {
         'pool_pre_ping': True,
         'pool_recycle': 300,
-        'pool_size': 5,
-        'max_overflow': 10,
     }
 
     # File upload settings
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'tif', 'tiff', 'bmp'}
 
-    # Storage settings
-    STORAGE_TYPE = os.getenv('STORAGE_TYPE', 'cloudinary')  # 'cloudinary' or 'local'
-    UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
+    # Storage settings - local by default
+    STORAGE_TYPE = os.getenv('STORAGE_TYPE', 'local')
+    UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', os.path.join(BASE_DIR, 'uploads'))
 
     # Cloudinary settings
     CLOUDINARY_CLOUD_NAME = os.getenv('CLOUDINARY_CLOUD_NAME')
